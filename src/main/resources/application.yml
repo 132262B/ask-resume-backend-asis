@@ -1,0 +1,69 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  jpa:
+    show-sql: true # 콘솔창에 SQL 출력
+    open-in-view: false # 영속성 컨텍스트의 생존 범위를 트랜잭션 범위로 한정
+    properties:
+      hibernate:
+        format_sql: true # SQL 예쁘게 출력
+        default_batch_fetch_size: 1000 # 일대다 컬렉션 조회 시 성능 최적화
+
+  messages:
+    basename: message/messages
+    encoding: UTF-8
+
+  servlet:
+    multipart:
+      max-file-size: 3MB # 파일 업로드 요청 시 하나의 파일 크기를 10MB 제한
+      max-request-size: 3MB # 파일 업로드 요청 시 모든 파일 크기합을 10MB 제한
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+file:
+  licensed:
+    content: application/pdf
+
+# logging 설정
+logging:
+  level:
+    org.hibernate.type: off # 콘솔창에 조건에 바인딩되는 값 및 조회 결과 출력
+
+# spring cloud feign client 설정
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+# Swagger 설정
+swagger:
+  version: "1.2"
+
+# JWT Token 설정
+token:
+  secret: ENC(JoYvQTaEOtzggRUjebDL3gJvRwwU+gAk+AUO5Hw0p2w+Rg2pkuOlNOCYSUfsXJT71lFaiSL+7CfqXQo27fQFLyIk7RXG+TbtUWpFmoIm3bibAnYge8paDilNi33VvX3s)
+  access-token-expiration-time: 900000  # 15분 1000(ms) x 60(s) x 15(m)
+  refresh-token-expiration-time: 1209600000 # 2주 1000(ms) x 60 (s) x 60(m) x 24(h) x 14(d)
+
+# Jasypt password 설정
+jasypt:
+  encryptor:
+    password: ${PASSWORD}
+
+# 구글 API 설정
+google:
+  client:
+    id: ENC(Kpzzi6NP09y8n4dBVBjh1wmygBFflVlmK4T5Ox8SjSOMgZHQ4anmqWOGecPq1vpU5xO4WcngZAfTBWSV8aE5oOqs9kKGq3JayJkTI+7GT8imbfjJqwGI7A==)
+    secret: ENC(m27Z1jgN6RUXKLoZMPFVKuUpdySPaXMeuvKKpdlG48G9eEmEzFhUuufJ8mnHK/6h)
+
+
+# 외 다른 내용은 GptConfig 에서 수정
+openai:
+  token: ENC(0cqGX1kttHKlPJJiEpjkN/ncwaG2aTEHcWnhWdm07ElZjU6i6Mw2UytcPG2b19UFfyVUegGzEOhnakQrTRD1SA==)

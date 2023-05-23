@@ -1,0 +1,34 @@
+server:
+  ssl:
+    enabled: true
+    key-store: ENC(8qtnALkqgj0QPcreREGS1PJVQPZoBUu0oayo5fJ5vAI=)
+    key-store-password: ENC(k8aex9BuH7s5I0hoX9IXN4gT2lBgS1iQ8eI1jhuklElAbuf2W+oOtrPXcRqCliDB)
+    key-store-type: PKCS12
+    key-alias: 1
+
+spring:
+  datasource:
+    url: ENC(K3MI1SHMCh6yPjfQqvutuBkdjTaL5nErdT3ieJm1YbdywWgKJqD6OWzFA5gM7fbLBFll2Kg+OQVWGpzFXf+hyzbvN2PRV8V5tht5ENqBq95DtLO5se4uIcK6mjLwIVOr/u7UE4CWuwyFtetKUJ7y12FMzDWpqUsFoOuICnWszYiBs/kqmxpSaQ==)
+    username: ENC(QG90JJ2vRU3xjEpv/HkjhBiIpwXF0Ofr)
+    password: ENC(mdL5KV+TXIE4izGxMfrvKduAXsqmeQYmYJSzTjHQYCPTqBXc/Ojy12UlmocnPr163JglsTCGxa8=)
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: false
+
+logging:
+  level:
+    app.askresume: info
+
+# Swagger 설정
+swagger:
+  title: "ask-resume API DOCS (운영)"
+  description: "운영서버 API 문서입니다."
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: off
